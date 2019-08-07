@@ -1,0 +1,22 @@
+/*更新customer表的salary低于五千的乘二*/
+UPDATE customer SET salary = salary*2 WHERE salary < 5000;
+/*5．	对deposite表进行统计，按银行统计存款总数，显示为b_id,total.*/
+SELECT b.b_id,b.bank_name,SUM(d.amount) FROM deposite d LEFT JOIN customer c ON d.`c_id`=c.`c_id` LEFT JOIN `bank` b ON d.`b_id`=b.`b_id` GROUP BY b.bank_name DESC
+/*6．	对deposite、customer、bank进行查询，查询条件为location在广州、
+苏州、济南的客户，存款在300000至500000之间的存款记录，显示客户姓名name、
+银行名称bank_name、存款金额amount*/
+
+/*7．	在deposite中插入一条记录，客户标识c_id为你的学号，银行标识b_id为B0003,存款日期dep_date为当前系统日期，存款期限type为3，存款金额amount为50000 */
+INSERT INTO deposite (c_id,b_id,dep_date,dep_tupe,amount) VALUES ('你的学号',3,NOW(),3,50000)
+/*(1)	在bank中插入一条新记录B0005,交通银行*/
+INSERT INTO bank (b_id,bank_name) VALUES (5,'交通银行')
+/*查询今天到期的存款信息*/
+SELECT * FROM 'deposite' WHERE NOW()-dep_date=dep_dape
+/*查寻存款金额查过50000为3年的存款信息*/
+SELECT * FROM 'deposite' WHERE amount > 50000 AND TIMESTAMPDIFF(YEAR,dep_date,NOW()) = 3
+/*查询前三名存款信息*/
+SELECT * FROM 'deposite' GROUP BY amount DESC LIMIT 0,3
+/**查询孙杨在中国银行存款信息*/
+SELECT * FROM deposite d LEFT JOIN customer c ON d.'c_id'=c.'c_id' LEFT JOIN 'bank' b ON d.'b_id'=b.'b_id' WHERE c.name="孙杨" AND b.bank_name='中国银行'
+/*查询存款日期在2004年之后的农业银行的存款信息降序*/
+SELECT * FROM deposite d LEFT JOIN customer c ON d.'c_id'=c.'c_id' LEFT JOIN 'bank' b ON d.'b_id'=b.'b_id' WHERE dep_date>'2004-01-01'GROUP BY dep_date DESC
