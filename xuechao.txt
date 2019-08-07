@@ -1,0 +1,10 @@
+update customer set salary=salary*2 where salary<5000;
+select bid,amount from deposite where amount
+SELECT NAME,bankname,amount FROM bank,customer,deposite WHERE deposite.amount>30000
+insert into deposite(cid,bid,depdate,deptype,amount) VALUES('101005','B0003','2019-08-06',3,50000)
+insert into bank(bid,bankname) VALUES("B0005","交通银行")
+select amount from deposite where depdate<'2019-08-06'
+select amount from deposite where amount>50000 and depdate='2016-08-06'
+select * from deposite where did<=3
+select * from deposite d,bank b,customer c where bankname="中国银行" and name="孙杨" and d.bid=b.bid and d.cid=c.cid
+select * from deposite where year(depdate)>2004 order by did desc
