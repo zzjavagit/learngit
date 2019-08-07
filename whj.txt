@@ -10,6 +10,7 @@ SELECT b.b_id,b.bank_name,SUM(d.amount) FROM deposite d LEFT JOIN customer c ON 
 INSERT INTO deposite (c_id,b_id,dep_date,dep_tupe,amount) VALUES ('你的学号',3,NOW(),3,50000)
 /*(1)	在bank中插入一条新记录B0005,交通银行*/
 INSERT INTO bank (b_id,bank_name) VALUES (5,'交通银行')
+
 /*查询今天到期的存款信息*/
 SELECT * FROM 'deposite' WHERE NOW()-dep_date=dep_dape
 /*查寻存款金额查过50000为3年的存款信息*/
