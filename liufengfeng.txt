@@ -33,3 +33,4 @@ SELECT d.dep_date,d.dep_type,d.amount from deposite d,customer c,bank b WHERE d.
 
 #查询存款日期在2004年之后的农业银行的存款信息，并按降序排列
 select c.name,d.dep_date,d.dep_type,d.amount from deposite d,customer c,bank b WHERE d.c_id=c.c_id and d.b_id=b.b_id and d.dep_date>'2004-12-31' and b.bank_name='农业银行'
+aaa
